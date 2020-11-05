@@ -10,7 +10,7 @@ const Routers = () => {
     return (
         <HashRouter>
             <Switch>
-                <Route path="/admin/:path?/:path?" exact>
+                <Route path="/admin/:path?/:path?" >
                
                     <MainAdmin>
                        
