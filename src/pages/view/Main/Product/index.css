@@ -1,0 +1,40 @@
+.container-main-product{
+    width: 95%;
+    margin: 0 auto;
+    background: #ffffff;
+    
+} 
+.container-main-product .ant-row{
+    margin: 30px;
+}
+.menu-food-col{
+    padding-right: 10px;
+}
+.row-food-all{
+    margin: 0;
+    background:#eeeeee;
+}
+.name-cate-food{
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.875rem;
+}
+.btn-see-more{
+    background: none ;
+    border: none;
+    color:black;
+}
+.row-show-cart{
+    margin: 0;
+    background-color: #eeeeee;
+   
+    border-radius: 4px;
+    padding: 12px;
+}
+.row-show-cart .ant-row{
+    margin: 10px 0 0 0 ;
+
+}
+.row-price-cart{
+    background-color: tomato;
+}

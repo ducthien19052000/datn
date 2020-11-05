@@ -1,0 +1,28 @@
+.carousel-home{
+    padding: 0;
+    width: 100%;
+    margin: auto;
+    
+}
+.site-layout-background{
+    padding: 24;
+    min-height: 380;
+    width: 93%;
+    margin: 0 auto;
+    background: #fff;
+
+}
+#myBtn {
+    background-color: #EB7100;
+    padding: 5px;
+    position: fixed;
+    z-index: 1000;
+    top: 19vh;
+    right: 3vh;
+    border: 8px solid white;
+    justify-content: center;
+    border-radius: 50px;
+    width: 60px;
+    
+  }
+  
