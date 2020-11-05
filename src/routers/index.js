@@ -20,7 +20,7 @@ const Routers = () => {
                 <Route >
                     <Main>
                         <Switch>
-                            <Route path="/" exact>
+                            <Route path="/" >
                                 <Home />
                             </Route>
                             <Route path="/product" >
