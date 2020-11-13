@@ -4,7 +4,7 @@ import {fork, put, take} from 'redux-saga/effects'
 function* fetchListFood(){
     while(true){
       yield take(ActionType.GET_DATA)
-        const requestGet = yield fetch(`https://5e7febfb7a92ed001656095b.mockapi.io/product`,{
+        const requestGet = yield fetch(`https://website-fpoly-food.herokuapp.com/product/`,{
             method: 'GET',
             headers: new Headers({
                 'Content-Type' : 'application/json',
@@ -13,11 +13,13 @@ function* fetchListFood(){
                 
         })
         const resp = yield requestGet.json();
-            yield put(getDataSuccess(resp));
+     
+            yield put(getDataSuccess(resp.body.content));
 
     }
    
 }
+
 
 function* rootSaga (){
     yield fork(fetchListFood);

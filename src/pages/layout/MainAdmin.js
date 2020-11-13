@@ -1,10 +1,37 @@
 import React from 'react'
+import { Layout, Breadcrumb } from 'antd';
 
-const MainAdmin = () => {
+import './index.css'
+import Header from '../../components/Admin/Header';
+import Slider from '../../components/Admin/Slider';
+import Footer from '../../components/Admin/Footer';
+
+
+
+
+
+const MainAdmin = ({children}) => {
+  const {Content}=Layout
     return (
-        <div>
+        <>
+         
+      <Layout>
+        <Slider/>
+        <Layout className="site-layout">
+            <Header/>
+        
+          <Content
+            style={{ margin: '16px' }}
+           
+          >
+              {children}
             
-        </div>
+          </Content>
+          <Footer/>
+        </Layout>
+      </Layout>
+       
+        </>
     )
 }
 

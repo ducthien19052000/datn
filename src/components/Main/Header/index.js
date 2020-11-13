@@ -6,6 +6,7 @@ import Avatar from 'antd/lib/avatar/avatar';
 import {Link} from 'react-router-dom'
 
 import './index.css'
+import { GOOGLE_AUTH_URL } from '../../../constants';
 
 
 
@@ -30,7 +31,7 @@ const Header = () => {
     const { Header } = Layout;
     return (
         <Header className='header-main' >
-          <div className="logo">
+          <div className="logo-main">
                <Image src='https://png.pngtree.com/png-clipart/20190520/original/pngtree-food-logo-designs-with-spoon-and-fork-png-image_4158238.jpg' width={50}/></div>
           <Menu theme="dark"  mode="horizontal" className='menu-main' >
                <Menu.Item key="1"> <Link to='/'> Trang chủ</Link></Menu.Item>
@@ -44,7 +45,10 @@ const Header = () => {
             
           </Menu>
           <Search placeholder="Tìm món ăn" className='search-main'  enterButton />
+          <a href={GOOGLE_AUTH_URL}>
           <Avatar size="large" icon={<UserOutlined  />} style={{marginLeft:'15px'}}/>
+          </a>
+       
         </Header>
     )
 }

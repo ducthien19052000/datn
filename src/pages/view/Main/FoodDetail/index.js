@@ -1,9 +1,28 @@
-import { DeleteTwoTone, EditTwoTone, MinusCircleFilled, PlusCircleFilled, SettingOutlined, ShoppingCartOutlined } from '@ant-design/icons'
-import { Badge, Button, Card, Col, Divider, Drawer, Image, Input, Row } from 'antd'
-import React, { useState } from 'react'
+import { DeleteTwoTone, EditTwoTone, SettingOutlined, ShoppingCartOutlined } from '@ant-design/icons'
+import { Badge, Button, Card, Col, Divider, Drawer, Image, InputNumber, Row } from 'antd'
+import React, { useEffect, useState } from 'react'
+import {useParams} from  "react-router-dom"
 import './index.css'
 
 const FoodDetail = () => {
+  const id = useParams().id;
+  const [foodDetail,setFoodDetail] = useState({});
+  useEffect(()=>{
+    fetch(`https://website-fpoly-food.herokuapp.com/product/${id}`, {
+  "method": "GET",
+  "headers": new Headers({
+    'Content-Type' : 'application/json',
+    'Accept': '*/*'
+})
+})
+.then(response => response.json())
+.then(response => {
+    setFoodDetail(response.body)
+})
+.catch(err => { console.log(err); 
+});
+   
+  },[id])
     const [visible, setVisible] = useState(false);
     const showDrawer = () => {
       setVisible(true);
@@ -11,6 +30,9 @@ const FoodDetail = () => {
     const onClose = () => {
       setVisible(false);
     };
+    const onChange=(value)=>{
+      console.log('changed', value);
+    }
     return (
         <>
             <Row className='row-food-detail-container' justify="center" style={{marginTop:'30px'}}>
@@ -20,26 +42,23 @@ const FoodDetail = () => {
                 <Col span={21} style={{background:'#fff'}}>
                     <Row>
                         <Col span={8} className='col-img-food-detail'>
-                        <Image  src="https://dashboard-api.flyfood.vn/system/product_images/2494/image.png"/>
+                        <Image  src={foodDetail.image}/>
 
                         </Col>
                         <Col span={11}>
                             <div className='food-detail-info'>
                                 <span  className='span-name-shop'>Món ngón Fpoly</span>
-                                <span  className='span-name-food-detail'> Tên món ăn </span>
+                                <span  className='span-name-food-detail'> {foodDetail.productName} </span>
                             </div>
-                            <h2 style={{fontSize:'1.75rem',marginTop:'20px',fontWeight:600}}>Tên món ăn</h2>
-                            <span className='span-id-food'>Mã sản phẩm : </span>
-                            <p><strong>Tên món ăn</strong> mô tả món ăn</p>
+                            <h2 style={{fontSize:'1.75rem',marginTop:'20px',fontWeight:600}}> {foodDetail.productName}</h2>
+                            <span className='span-id-food'>Mã sản phẩm : {foodDetail.id} </span>
+                            <p><strong>{foodDetail.productName}</strong> {foodDetail.description}</p>
                         </Col>
                         <Col span={5} style={{marginTop:'30px',textAlign:"center"}}>
-                            <Button><PlusCircleFilled /></Button>
-                            <Input style={{width:'30%'}}
-                            defaultValue='0'
-                                placeholder="Input a number"
-                                maxLength={25}
-                                />
-                            <Button><MinusCircleFilled /></Button>
+                           
+                            <InputNumber min={1} max={foodDetail.quantity} defaultValue={3}  onChange={onChange} />
+                           
+                            <h3>{foodDetail.price} VNĐ</h3>
                             <Button style={{width:'90%',background:'#eb7100',marginTop:'15px'}}>Đặt món</Button>
                             </Col>
 
